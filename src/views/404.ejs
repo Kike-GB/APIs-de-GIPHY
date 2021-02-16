@@ -20,15 +20,21 @@
             </figure>
         </div>
     </main>
+
+    <!-- requiere axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+
     <script>
-        
-        // petición con fecth
         let gif = document.getElementById('gif')
-        fetch('https://api.giphy.com/v1/gifs/random?api_key=3bv0tzqXQGkyGfJY0I2vVorfRwmRvmjD&tag=error404&rating=g')
-            .then(response => response.json())
-            .then(json => gif.src = json.data.images.original.url)
+
+        // petición con fecth
+        // fetch('https://api.giphy.com/v1/gifs/random?api_key=3bv0tzqXQGkyGfJY0I2vVorfRwmRvmjD&tag=error404&rating=g')
+        //     .then(response => response.json())
+        //     .then(json => gif.src = json.data.images.original.url)
 
         // petición con axios
+        axios('https://api.giphy.com/v1/gifs/random?api_key=3bv0tzqXQGkyGfJY0I2vVorfRwmRvmjD&tag=error404&rating=g')
+            .then(json => gif.src = json.data.data.images.original.url)
     </script>
 </body>
 </html>
